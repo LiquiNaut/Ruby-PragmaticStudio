@@ -9,7 +9,7 @@ car_race = Game.new("Forza")
 car_race.add_player(player1)
 car_race.add_player(player2)
 car_race.add_player(player3)
-car_race.play
+car_race.play(3)
 
 =begin
 player2.name = "Lawrence"
