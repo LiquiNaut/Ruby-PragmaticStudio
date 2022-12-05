@@ -47,6 +47,11 @@ class Game
       puts "#{player.name} (#{player.health})"
     end
 
+
+    puts "\n#{@title} High Scores: "
+    @players.sort.each do |sortplayers|
+      puts "#{sortplayers.name.ljsut(20, '.')} #{sortplayers.score}"
+    end
   end
 
 end
