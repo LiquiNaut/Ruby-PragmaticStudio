@@ -28,6 +28,11 @@ class Game
     end
   end
 
+  def print_name_and_health(player)
+    puts "#{player.name} (#{player.health})"
+  end
+
+
   def print_stats
     strong_players = @players.select { |player| player.strong? }
     week_players = @players.reject { |player| player.strong?}
@@ -39,18 +44,18 @@ class Game
     puts "\n#{strong_players.size} strong players:"
 
     strong_players.each do |player|
-      puts "#{player.name} (#{player.health})"
+      print_name_and_health(player)
     end
 
     puts "\n#{week_players.size} wimpy players:"
     week_players.each do |player|
-      puts "#{player.name} (#{player.health})"
+      print_name_and_health(player)
     end
 
 
     puts "\n#{@title} High Scores: "
     @players.sort.each do |sortplayers|
-      puts "#{sortplayers.name.ljsut(20, '.')} #{sortplayers.score}"
+      puts "#{sortplayers.name.ljust(20, '.')} #{sortplayers.score}"
     end
   end
 
