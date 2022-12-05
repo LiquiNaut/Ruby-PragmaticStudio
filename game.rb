@@ -27,4 +27,26 @@ class Game
       end
     end
   end
+
+  def print_stats
+    strong_players = @players.select { |player| player.strong? }
+    week_players = @players.reject { |player| player.strong?}
+
+    # strong_players, wimpy_players = @players.partition { |player| player.strong? }
+
+    puts "\n#{@title} Statistics:"
+
+    puts "\n#{strong_players.size} strong players:"
+
+    strong_players.each do |player|
+      puts "#{player.name} (#{player.health})"
+    end
+
+    puts "\n#{week_players.size} wimpy players:"
+    week_players.each do |player|
+      puts "#{player.name} (#{player.health})"
+    end
+
+  end
+
 end
