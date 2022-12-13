@@ -39,10 +39,13 @@ class Game
     puts "#{player.name} (#{player.health})"
   end
 
+  def total_points
+    @players.reduce(0) { |sum, player| sum + player.points }
+  end
 
   def print_stats
-    strong_players = @players.select { |player| player.strong? }
-    week_players = @players.reject { |player| player.strong?}
+    strong_players = @players.select(&:strong?)
+    week_players = @players.reject(&:strong?)
 
     # strong_players, wimpy_players = @players.partition { |player| player.strong? }
 
@@ -59,7 +62,6 @@ class Game
       print_name_and_health(player)
     end
 
-
     puts "\n#{@title} High Scores: "
     @players.sort.each do |sortplayers|
       puts "#{sortplayers.name.ljust(20, '.')} #{sortplayers.score}"
@@ -69,6 +71,7 @@ class Game
       puts "\n#{player.name}'s point totals:"
       puts "#{player.points} grand total points"
     end
-  end
 
+    puts "#{total_points} total points from treasures found"
+  end
 end
