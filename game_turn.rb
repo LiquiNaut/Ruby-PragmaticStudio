@@ -20,10 +20,12 @@ module GameTurn
     case die.roll
     when 1..2
       player.blam
+      puts "#{player.name} was blamed."
     when 3..4
       puts "#{player.name} was skipped."
     else
       player.w00t
+      puts "#{player.name} was w00ted."
     end
 
     treasure = TreasureTrove.random

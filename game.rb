@@ -64,6 +64,11 @@ class Game
     @players.sort.each do |sortplayers|
       puts "#{sortplayers.name.ljust(20, '.')} #{sortplayers.score}"
     end
+
+    @players.each do |player|
+      puts "\n#{player.name}'s point totals:"
+      puts "#{player.points} grand total points"
+    end
   end
 
 end
