@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require_relative 'treasure_trove'
 
 class Player
   attr_reader :health
@@ -26,6 +27,12 @@ class Player
 
   def <=>(other)
     other.score <=> score
+  end
+
+  def each_found_treasure
+    @found_treasures.each do |name, points|
+      yield Treasure.new(name, points)
+    end
   end
 
   def score
