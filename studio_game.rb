@@ -9,8 +9,20 @@ car_race = Game.new("Forza")
 car_race.add_player(player1)
 car_race.add_player(player2)
 car_race.add_player(player3)
-car_race.play(3)
-car_race.print_stats
+
+loop do
+  puts "\nHow many game rounds? ('quit' to exit)"
+  user_input = gets.chomp.downcase
+  case user_input
+  when /^\d+$/
+    car_race.play(user_input.to_i)
+  when 'quit', 'exit'
+    car_race.print_stats
+    break
+  else
+    puts "Please enter a number or 'quit'"
+  end
+end
 
 =begin
 player2.name = "Lawrence"
