@@ -18,6 +18,8 @@ loop do
   end
 end
 
+car_race.save_high_scores
+
 =begin
 player2.name = "Lawrence"
 puts player2.name

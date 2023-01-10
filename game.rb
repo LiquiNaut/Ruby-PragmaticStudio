@@ -17,6 +17,15 @@ class Game
     @players << a_player
   end
 
+  def save_high_scores(filename="high_scores.txt")
+    File.open(filename, "w") do|file|
+      file.puts "#{@title} High Scores:"
+      @players.sort.each do |sortplayers|
+        file.puts "#{sortplayers.name.ljust(20, '.')} #{sortplayers.score}"
+      end
+    end
+  end
+
   def load_players(filename)
     File.readlines(filename).each do |line|
       name, health = line.split(',')
