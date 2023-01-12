@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 require_relative 'treasure_trove'
+require_relative 'playable'
 
 class Player
+  include(Playable)
   attr_reader :health
   attr_accessor :name
 
@@ -21,10 +23,6 @@ class Player
     puts "#{name}'s treasures: #{@found_treasures}"
   end
 
-  def strong?
-    @health > 100
-  end
-
   def <=>(other)
     other.score <=> score
   end
@@ -41,14 +39,6 @@ class Player
 
   def to_s
     "I'm #{@name} with health = #{@health}, points = #{points}, and score = #{score}."
-  end
-
-  def blam
-    @decreased_health = @health -= 10
-  end
-
-  def w00t
-    @increased_health = @health += 15
   end
 end
 
